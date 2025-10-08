@@ -23,6 +23,9 @@ const Navbar = () => {
             <Link to="/producten" className="text-secondary hover:text-secondary/80 transition-colors font-medium">
               Producten
             </Link>
+            <Link to="/specifieke-aanvragen" className="text-secondary hover:text-secondary/80 transition-colors font-medium">
+              Specifieke aanvragen
+            </Link>
             <Link to="/over-ons" className="text-secondary hover:text-secondary/80 transition-colors font-medium">
               Over ons
             </Link>
