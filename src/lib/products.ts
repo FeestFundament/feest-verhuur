@@ -15,7 +15,7 @@ export const products: Product[] = [
   {
     id: "1",
     name: "Statafel wit",
-    description: "Elegante witte statafel, perfect voor elk feest. Optioneel met tafelrok verkrijgbaar.",
+    description: "Elegante witte statafel. Beschikbaar met zwarte of witte tafelrok. Voor andere kleuren doeken, vraag een offerte aan.",
     price: 12.50,
     image: statafelImage,
     category: "Tafels"
@@ -38,9 +38,9 @@ export const products: Product[] = [
   },
   {
     id: "4",
-    name: "Statafel zwart",
-    description: "Stijlvolle zwarte statafel voor een chique uitstraling.",
-    price: 12.50,
+    name: "Tafelrok zwart",
+    description: "Stijlvolle zwarte tafelrok voor statafels. Voor andere kleuren, vraag een offerte aan.",
+    price: 5.00,
     image: statafelImage,
     category: "Tafels"
   },
