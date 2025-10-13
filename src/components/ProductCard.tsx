@@ -63,7 +63,7 @@ const ProductCard = ({ id, name, description, price, image, colors }: ProductCar
 
   return (
     <>
-      <Card className="bg-card border-border overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+      <Card className="bg-card border-border overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
         <div className="aspect-square overflow-hidden bg-muted">
           <img 
             src={image} 
@@ -71,10 +71,10 @@ const ProductCard = ({ id, name, description, price, image, colors }: ProductCar
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           />
         </div>
-        <CardContent className="p-4">
+        <CardContent className="p-4 flex-1 flex flex-col">
           <h3 className="text-xl font-semibold text-secondary mb-2">{name}</h3>
-          <p className="text-muted-foreground text-sm mb-3">{description}</p>
-          <p className="text-2xl font-bold text-secondary">€{price.toFixed(2)}</p>
+          <p className="text-muted-foreground text-sm mb-3 flex-1">{description}</p>
+          <p className="text-2xl font-bold text-secondary mt-auto">€{price.toFixed(2)}</p>
         </CardContent>
         <CardFooter className="p-4 pt-0 flex flex-col gap-3">
           {colors && colors.length > 0 && (
