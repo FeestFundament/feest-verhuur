@@ -32,10 +32,34 @@ export const products: Product[] = [
   {
     id: "3",
     name: "Mobiele bar",
-    description: "Professionele mobiele bar voor uw feest. Inclusief verlichte achterwand.",
+    description: "Professionele mobiele bar voor uw feest. Ombouw verkrijgbaar als apart product.",
     price: 75.00,
     image: barImage,
     category: "Bars"
+  },
+  {
+    id: "7",
+    name: "Bar ombouw",
+    description: "Stijlvolle ombouw voor de mobiele bar. Geeft uw bar een professionele uitstraling.",
+    price: 35.00,
+    image: barImage,
+    category: "Bars"
+  },
+  {
+    id: "8",
+    name: "Bartafel",
+    description: "Professionele bartafel. Ombouw verkrijgbaar als apart product.",
+    price: 45.00,
+    image: statafelImage,
+    category: "Tafels"
+  },
+  {
+    id: "9",
+    name: "Bartafel ombouw",
+    description: "Stijlvolle ombouw voor de bartafel. Geeft uw bartafel een professionele uitstraling.",
+    price: 25.00,
+    image: statafelImage,
+    category: "Tafels"
   },
   {
     id: "4",
