@@ -24,7 +24,7 @@ const Producten = () => {
           return categoryLower === 'tenten';
         }
         if (categorie === 'extras' || categorie === 'verlichting' || categorie === 'verwarming' || categorie === 'accessoires') {
-          return categoryLower === 'verlichting' || categoryLower === 'verwarming' || categoryLower === 'accessoires';
+          return categoryLower === 'verlichting' || categoryLower === 'verwarming' || categoryLower === 'accessoires' || categoryLower === 'dranken';
         }
         
         return false;
