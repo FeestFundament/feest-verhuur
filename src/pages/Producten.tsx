@@ -1,4 +1,5 @@
 import { useSearchParams, Link } from "react-router-dom";
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import ProductCard from "@/components/ProductCard";
 import Footer from "@/components/Footer";
@@ -8,6 +9,10 @@ import { products } from "@/lib/products";
 const Producten = () => {
   const [searchParams] = useSearchParams();
   const categorie = searchParams.get('categorie');
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [categorie]);
   
   // Filter products based on category
   const filteredProducts = categorie 
