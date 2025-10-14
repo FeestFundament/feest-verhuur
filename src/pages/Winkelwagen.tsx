@@ -72,7 +72,8 @@ const Winkelwagen = () => {
 
   const calculateTravelCost = () => {
     if (distance === null) return 0;
-    return Math.max(distance, 100);
+    if (distance <= 50) return 100;
+    return 100 + (distance - 50);
   };
 
   const travelCost = calculateTravelCost();
@@ -211,7 +212,7 @@ const Winkelwagen = () => {
                   <div className="border-t border-border pt-3">
                     <Label htmlFor="address" className="text-secondary">Bezorgadres</Label>
                     <p className="text-xs text-muted-foreground mt-1 mb-2">
-                      Startlocatie: Zwolle • €1/km • Minimum: €100
+                      Startlocatie: Zwolle • Tot 50 km: €100 • Daarboven: +€1/km
                     </p>
                     <div className="flex gap-2">
                       <Input
