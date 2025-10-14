@@ -10,16 +10,28 @@ interface AvailabilityCalendarProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onConfirm: (startDate: Date, endDate: Date) => void;
+  onAddToCart?: (startDate: Date, endDate: Date) => void;
   productName: string;
 }
 
-const AvailabilityCalendar = ({ open, onOpenChange, onConfirm, productName }: AvailabilityCalendarProps) => {
+const AvailabilityCalendar = ({ open, onOpenChange, onConfirm, onAddToCart, productName }: AvailabilityCalendarProps) => {
   const [dateRange, setDateRange] = useState<DateRange | undefined>();
 
   const handleConfirm = () => {
     if (dateRange?.from) {
       const endDate = dateRange.to || dateRange.from;
       onConfirm(dateRange.from, endDate);
+      onOpenChange(false);
+      setDateRange(undefined);
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (dateRange?.from) {
+      const endDate = dateRange.to || dateRange.from;
+      if (onAddToCart) {
+        onAddToCart(dateRange.from, endDate);
+      }
       onOpenChange(false);
       setDateRange(undefined);
     }
@@ -59,17 +71,28 @@ const AvailabilityCalendar = ({ open, onOpenChange, onConfirm, productName }: Av
           </div>
         )}
 
-        <DialogFooter>
-          <Button variant="ghost" onClick={() => onOpenChange(false)}>
+        <DialogFooter className="flex-col sm:flex-row gap-2">
+          <Button variant="ghost" onClick={() => onOpenChange(false)} className="w-full sm:w-auto">
             Annuleren
           </Button>
           <Button 
-            variant="gold" 
+            variant="goldOutline" 
             onClick={handleConfirm}
             disabled={!dateRange?.from}
+            className="w-full sm:w-auto"
           >
             Bevestigen
           </Button>
+          {onAddToCart && (
+            <Button 
+              variant="gold" 
+              onClick={handleAddToCart}
+              disabled={!dateRange?.from}
+              className="w-full sm:w-auto"
+            >
+              In winkelwagen
+            </Button>
+          )}
         </DialogFooter>
       </DialogContent>
     </Dialog>

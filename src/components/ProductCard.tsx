@@ -35,6 +35,26 @@ const ProductCard = ({ id, name, description, price, image, colors }: ProductCar
     toast.success("Datums geselecteerd!");
   };
 
+  const handleDirectAddToCart = (startDate: Date, endDate: Date) => {
+    if (colors && colors.length > 0 && !selectedColor) {
+      toast.error("Selecteer eerst een kleur");
+      return;
+    }
+
+    addToCart({
+      productId: id,
+      quantity,
+      startDate,
+      endDate,
+      color: selectedColor || undefined,
+    });
+    
+    const colorText = selectedColor ? ` (${selectedColor})` : '';
+    toast.success(`${quantity}x ${name}${colorText} toegevoegd aan winkelwagen`);
+    setQuantity(1);
+    setSelectedDates(null);
+  };
+
   const handleAddToCart = () => {
     if (!selectedDates) {
       toast.error("Selecteer eerst een verhuurperiode");
@@ -140,6 +160,7 @@ const ProductCard = ({ id, name, description, price, image, colors }: ProductCar
         open={showCalendar}
         onOpenChange={setShowCalendar}
         onConfirm={handleDateSelect}
+        onAddToCart={handleDirectAddToCart}
         productName={name}
       />
     </>
