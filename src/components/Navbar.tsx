@@ -36,6 +36,12 @@ const Navbar = () => {
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-background border border-border shadow-lg z-50">
                     <div className="grid gap-3 p-6 w-[400px] lg:w-[500px]">
+                      <div className="grid gap-2 pb-2 border-b">
+                        <Link to="/producten/alle" className="font-bold text-base text-secondary hover:text-secondary/80 transition-colors">
+                          Alle producten
+                        </Link>
+                      </div>
+                      
                       <div className="grid gap-2">
                         <Link to="/producten?categorie=tafels" className="font-semibold text-sm text-foreground hover:text-secondary transition-colors">
                           Tafels
