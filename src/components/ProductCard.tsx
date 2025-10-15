@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Minus, Plus, Calendar as CalendarIcon } from "lucide-react";
 import { toast } from "sonner";
-import AvailabilityCalendar from "./AvailabilityCalendar";
+import { supabase } from "@/integrations/supabase/client";
 import { useCart } from "@/contexts/CartContext";
+import AvailabilityCalendar from "./AvailabilityCalendar";
 
 interface ProductCardProps {
   id: string;
@@ -20,6 +21,7 @@ const ProductCard = ({ id, name, description, price, image, colors }: ProductCar
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDates, setSelectedDates] = useState<{ start: Date; end: Date } | null>(null);
   const [selectedColor, setSelectedColor] = useState<string>(colors?.[0] || "");
+  const [maxAvailable, setMaxAvailable] = useState<number | null>(null);
   const { addToCart } = useCart();
 
   const decreaseQuantity = () => {
@@ -30,15 +32,61 @@ const ProductCard = ({ id, name, description, price, image, colors }: ProductCar
     setQuantity(quantity + 1);
   };
 
-  const handleDateSelect = (startDate: Date, endDate: Date) => {
+  const handleDateSelect = async (startDate: Date, endDate: Date) => {
+    // Check availability
+    const { data, error } = await supabase.rpc('check_availability', {
+      p_product_id: id,
+      p_start_date: startDate.toISOString().split('T')[0],
+      p_end_date: endDate.toISOString().split('T')[0],
+      p_quantity: quantity
+    });
+
+    if (error) {
+      toast.error("Fout bij controleren beschikbaarheid");
+      console.error(error);
+      return;
+    }
+
+    if (data && data.length > 0) {
+      const availability = data[0];
+      setMaxAvailable(availability.max_available);
+      
+      if (!availability.available) {
+        toast.error(`Niet genoeg beschikbaar. Maximaal ${availability.max_available} stuks beschikbaar voor deze periode.`);
+        return;
+      }
+    }
+
     setSelectedDates({ start: startDate, end: endDate });
     toast.success("Datums geselecteerd!");
   };
 
-  const handleDirectAddToCart = (startDate: Date, endDate: Date) => {
+  const handleDirectAddToCart = async (startDate: Date, endDate: Date) => {
     if (colors && colors.length > 0 && !selectedColor) {
       toast.error("Selecteer eerst een kleur");
       return;
+    }
+
+    // Check availability again before adding to cart
+    const { data, error } = await supabase.rpc('check_availability', {
+      p_product_id: id,
+      p_start_date: startDate.toISOString().split('T')[0],
+      p_end_date: endDate.toISOString().split('T')[0],
+      p_quantity: quantity
+    });
+
+    if (error) {
+      toast.error("Fout bij controleren beschikbaarheid");
+      console.error(error);
+      return;
+    }
+
+    if (data && data.length > 0) {
+      const availability = data[0];
+      if (!availability.available) {
+        toast.error(`Niet genoeg beschikbaar. Maximaal ${availability.max_available} stuks beschikbaar voor deze periode.`);
+        return;
+      }
     }
 
     addToCart({
@@ -53,9 +101,10 @@ const ProductCard = ({ id, name, description, price, image, colors }: ProductCar
     toast.success(`${quantity}x ${name}${colorText} toegevoegd aan winkelwagen`);
     setQuantity(1);
     setSelectedDates(null);
+    setShowCalendar(false);
   };
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
     if (!selectedDates) {
       toast.error("Selecteer eerst een verhuurperiode");
       setShowCalendar(true);
@@ -65,6 +114,28 @@ const ProductCard = ({ id, name, description, price, image, colors }: ProductCar
     if (colors && colors.length > 0 && !selectedColor) {
       toast.error("Selecteer eerst een kleur");
       return;
+    }
+
+    // Check availability before adding to cart
+    const { data, error } = await supabase.rpc('check_availability', {
+      p_product_id: id,
+      p_start_date: selectedDates.start.toISOString().split('T')[0],
+      p_end_date: selectedDates.end.toISOString().split('T')[0],
+      p_quantity: quantity
+    });
+
+    if (error) {
+      toast.error("Fout bij controleren beschikbaarheid");
+      console.error(error);
+      return;
+    }
+
+    if (data && data.length > 0) {
+      const availability = data[0];
+      if (!availability.available) {
+        toast.error(`Niet genoeg beschikbaar. Maximaal ${availability.max_available} stuks beschikbaar voor deze periode.`);
+        return;
+      }
     }
 
     addToCart({
