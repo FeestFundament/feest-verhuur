@@ -9,7 +9,7 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Feest-Fundament Color System - Based on Logo */
-    --background: 0 0% 29%;    /* Dark charcoal gray from logo */
+    --background: 0 0% 0%;     /* Pure black from logo */
     --foreground: 0 0% 98%;    /* Almost white */
 
     --card: 0 0% 35%;          /* Slightly lighter gray */
