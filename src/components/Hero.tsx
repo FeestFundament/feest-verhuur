@@ -20,7 +20,7 @@ const Hero = () => {
       {/* Hero afbeelding sectie */}
       <section className="relative py-12 bg-background">
         <div className="container mx-auto px-4">
-          <div className="relative h-[400px] max-w-5xl mx-auto flex items-center justify-center overflow-hidden rounded-lg">
+          <div className="relative h-[400px] max-w-3xl mx-auto flex items-center justify-center overflow-hidden rounded-lg">
             <div 
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url(${heroImage})` }}
