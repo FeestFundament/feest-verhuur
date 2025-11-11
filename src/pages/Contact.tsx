@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
@@ -134,17 +134,6 @@ const Contact = () => {
                       <a href="tel:+31612345678" className="text-muted-foreground hover:text-secondary transition-colors">
                         +31 6 12 34 56 78
                       </a>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-4">
-                    <MapPin className="h-6 w-6 text-secondary flex-shrink-0 mt-1" />
-                    <div>
-                      <p className="font-semibold text-secondary">Adres</p>
-                      <p className="text-muted-foreground">
-                        Voorbeeldstraat 123<br />
-                        1234 AB Amsterdam
-                      </p>
                     </div>
                   </div>
                 </div>
