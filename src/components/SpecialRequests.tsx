@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Mail } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const SpecialRequests = () => {
   const [name, setName] = useState("");
@@ -13,7 +14,7 @@ const SpecialRequests = () => {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!name || !email || !message) {
@@ -21,14 +22,30 @@ const SpecialRequests = () => {
       return;
     }
 
-    // Hier zou je de offerte aanvraag kunnen versturen
-    toast.success("Uw offerte aanvraag is verstuurd! We nemen zo snel mogelijk contact met u op.");
-    
-    // Reset formulier
-    setName("");
-    setEmail("");
-    setPhone("");
-    setMessage("");
+    try {
+      const { error } = await supabase.functions.invoke('send-email', {
+        body: {
+          type: 'quote',
+          name,
+          email,
+          phone,
+          message
+        }
+      });
+
+      if (error) throw error;
+
+      toast.success("Uw offerte aanvraag is verstuurd! We nemen zo snel mogelijk contact met u op.");
+      
+      // Reset formulier
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast.error("Er is iets misgegaan. Probeer het later opnieuw.");
+    }
   };
 
   return (

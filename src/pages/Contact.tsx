@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -17,10 +18,28 @@ const Contact = () => {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.");
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    
+    try {
+      const { error } = await supabase.functions.invoke('send-email', {
+        body: {
+          type: 'contact',
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message
+        }
+      });
+
+      if (error) throw error;
+
+      toast.success("Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.");
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast.error("Er is iets misgegaan. Probeer het later opnieuw.");
+    }
   };
 
   return (
