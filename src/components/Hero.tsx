@@ -32,7 +32,7 @@ const Hero = () => {
                 <Button 
                   variant="gold" 
                   size="xl"
-                  className="shadow-2xl hover-scale animate-pulse"
+                  className="shadow-2xl"
                 >
                   Bekijk ons assortiment
                 </Button>
