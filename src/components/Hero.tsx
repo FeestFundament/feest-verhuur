@@ -7,20 +7,20 @@ const Hero = () => {
   return (
     <>
       {/* Logo sectie met zwarte achtergrond */}
-      <section className="bg-background py-8">
+      <section className="bg-background py-4">
         <div className="container mx-auto px-4 text-center animate-fade-in">
           <img 
             src={logo} 
             alt="Feest-Fundament - Het fundament voor een geslaagd feest" 
-            className="w-full max-w-2xl mx-auto drop-shadow-2xl"
+            className="w-full max-w-xl mx-auto drop-shadow-2xl"
           />
         </div>
       </section>
       
       {/* Hero afbeelding sectie */}
-      <section className="relative py-8 bg-background">
+      <section className="relative py-4 bg-background">
         <div className="w-full">
-          <div className="relative h-[200px] w-full flex items-center justify-center overflow-hidden">
+          <div className="relative h-[150px] w-full flex items-center justify-center overflow-hidden">
             <div 
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url(${heroImage})` }}
