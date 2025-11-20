@@ -5,14 +5,14 @@ import logo from "@/assets/logo-primary.png";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex flex-col bg-background">
+    <section className="min-h-[60vh] md:min-h-screen flex flex-col bg-background">
       {/* Logo sectie */}
-      <div className="py-8">
+      <div className="py-4 md:py-8">
         <div className="container mx-auto px-4 text-center animate-fade-in">
           <img 
             src={logo} 
             alt="Feest-Fundament - Het fundament voor een geslaagd feest" 
-            className="w-full max-w-xl mx-auto drop-shadow-2xl"
+            className="w-full max-w-[250px] md:max-w-xl mx-auto drop-shadow-2xl"
           />
         </div>
       </div>
@@ -22,7 +22,7 @@ const Hero = () => {
       
       {/* Hero afbeelding balk onderaan viewport */}
       <div className="w-full">
-        <div className="relative h-[150px] w-full flex items-center justify-center overflow-hidden">
+        <div className="relative h-[100px] md:h-[150px] w-full flex items-center justify-center overflow-hidden">
           <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${heroImage})` }}
@@ -34,7 +34,7 @@ const Hero = () => {
               <Button 
                 variant="gold" 
                 size="xl"
-                className="shadow-2xl"
+                className="shadow-2xl text-sm md:text-base"
               >
                 Bekijk ons assortiment
               </Button>
