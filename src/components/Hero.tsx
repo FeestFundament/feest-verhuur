@@ -5,7 +5,7 @@ import logo from "@/assets/logo-primary.png";
 
 const Hero = () => {
   return (
-    <section className="min-h-[60vh] md:min-h-screen flex flex-col bg-background">
+    <section className="h-screen max-h-screen flex flex-col bg-background overflow-hidden">
       {/* Logo sectie */}
       <div className="py-4 md:py-8">
         <div className="container mx-auto px-4 text-center animate-fade-in">
