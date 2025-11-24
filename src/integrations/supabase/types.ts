@@ -53,6 +53,27 @@ export type Database = {
         }
         Relationships: []
       }
+      profiles: {
+        Row: {
+          account_type: Database["public"]["Enums"]["account_type"]
+          created_at: string
+          email: string
+          id: string
+        }
+        Insert: {
+          account_type?: Database["public"]["Enums"]["account_type"]
+          created_at?: string
+          email: string
+          id: string
+        }
+        Update: {
+          account_type?: Database["public"]["Enums"]["account_type"]
+          created_at?: string
+          email?: string
+          id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -72,7 +93,7 @@ export type Database = {
       }
     }
     Enums: {
-      [_ in never]: never
+      account_type: "prive" | "zakelijk"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -199,6 +220,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      account_type: ["prive", "zakelijk"],
+    },
   },
 } as const

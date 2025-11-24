@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { ShoppingCart, ChevronDown, Menu, X } from "lucide-react";
+import { ShoppingCart, ChevronDown, Menu, X, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/contexts/CartContext";
+import { useAuth } from "@/contexts/AuthContext";
 import logo from "@/assets/logo-primary.png";
 import { useState } from "react";
 import {
@@ -21,6 +22,7 @@ import {
 
 const Navbar = () => {
   const { getCartItemCount } = useCart();
+  const { user, signOut } = useAuth();
   const cartItemCount = getCartItemCount();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -116,6 +118,27 @@ const Navbar = () => {
           </div>
           
           <div className="flex items-center gap-2">
+            {user ? (
+              <>
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  onClick={() => signOut()}
+                  className="text-secondary hover:text-secondary/80"
+                  title="Uitloggen"
+                >
+                  <LogOut className="h-5 w-5" />
+                </Button>
+              </>
+            ) : (
+              <Link to="/auth" className="hidden md:block">
+                <Button variant="ghost" size="sm" className="text-secondary hover:text-secondary/80">
+                  <User className="h-4 w-4 mr-2" />
+                  Inloggen
+                </Button>
+              </Link>
+            )}
+            
             <Link to="/winkelwagen">
               <Button variant="ghost" size="icon" className="relative text-secondary hover:text-secondary/80">
                 <ShoppingCart className="h-5 w-5" />
@@ -209,6 +232,29 @@ const Navbar = () => {
                   >
                     Contact
                   </Link>
+                  
+                  {user ? (
+                    <Button 
+                      variant="ghost" 
+                      onClick={() => {
+                        signOut();
+                        setMobileMenuOpen(false);
+                      }}
+                      className="text-lg font-medium text-secondary hover:text-secondary/80 justify-start px-0"
+                    >
+                      <LogOut className="h-5 w-5 mr-2" />
+                      Uitloggen
+                    </Button>
+                  ) : (
+                    <Link 
+                      to="/auth" 
+                      className="text-lg font-medium text-secondary hover:text-secondary/80 transition-colors flex items-center"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <User className="h-5 w-5 mr-2" />
+                      Inloggen
+                    </Link>
+                  )}
                 </nav>
               </SheetContent>
             </Sheet>

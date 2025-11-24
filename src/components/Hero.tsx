@@ -2,8 +2,15 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-party.jpg";
 import logo from "@/assets/logo-primary.png";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Hero = () => {
+  const { profile } = useAuth();
+  
+  const tagline = profile?.account_type === 'zakelijk' 
+    ? 'Uw partner voor professionele feestartikelen'
+    : 'Uw verhuurder voor professionele feestartikelen';
+  
   return (
     <section className="h-screen max-h-screen flex flex-col bg-background overflow-hidden">
       {/* Logo sectie */}
@@ -30,7 +37,10 @@ const Hero = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background/30" />
             
-            <div className="relative z-10 text-center px-4 animate-fade-in">
+            <div className="relative z-10 flex flex-col items-center justify-center gap-3 px-4 animate-fade-in">
+              <p className="text-foreground/90 text-xs md:text-sm font-medium tracking-wide">
+                {tagline}
+              </p>
               <Link to="/producten">
                 <Button 
                   variant="gold" 
