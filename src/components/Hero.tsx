@@ -13,8 +13,8 @@ const Hero = () => {
   
   return (
     <section className="h-screen max-h-screen flex flex-col bg-background overflow-hidden pb-16 md:pb-24">
-      {/* Logo sectie */}
-      <div className="py-4 md:py-8">
+      {/* Logo sectie - gecentreerd */}
+      <div className="flex-1 flex items-center justify-center">
         <div className="container mx-auto px-4 text-center animate-fade-in">
           <img 
             src={logo} 
@@ -23,9 +23,6 @@ const Hero = () => {
           />
         </div>
       </div>
-      
-      {/* Spacer om de balk naar beneden te duwen */}
-      <div className="flex-1" />
       
       {/* Hero afbeelding balk onderaan viewport */}
       <div className="w-full">
