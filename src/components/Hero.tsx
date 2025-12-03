@@ -12,7 +12,7 @@ const Hero = () => {
     : 'Uw verhuurder voor professionele feestartikelen';
   
   return (
-    <section className="h-screen max-h-screen flex flex-col bg-background overflow-hidden">
+    <section className="h-screen max-h-screen flex flex-col bg-background overflow-hidden pb-8 md:pb-12">
       {/* Logo sectie */}
       <div className="py-4 md:py-8">
         <div className="container mx-auto px-4 text-center animate-fade-in">
