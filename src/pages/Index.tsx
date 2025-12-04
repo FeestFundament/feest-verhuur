@@ -4,10 +4,14 @@ import Hero from "@/components/Hero";
 import ProductCard from "@/components/ProductCard";
 import SpecialRequests from "@/components/SpecialRequests";
 import Footer from "@/components/Footer";
-import { products } from "@/lib/products";
+import { getVisibleProducts } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
+  const visibleProducts = getVisibleProducts();
+  // Show featured products: Statafel, Biertafel, Partytent
+  const featuredProducts = visibleProducts.filter(p => ['1', '2', '5'].includes(p.id));
+  
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -18,10 +22,8 @@ const Index = () => {
           <h2 className="text-4xl font-bold text-secondary mb-8 text-center">
             Onze populairste producten
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {products
-              .filter(p => ['1', '2', '3', '5'].includes(p.id))
-              .map((product) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {featuredProducts.map((product) => (
                 <ProductCard
                   key={product.id}
                   {...product}
@@ -37,14 +39,8 @@ const Index = () => {
               <Link to="/producten?categorie=tafels">
                 <Button variant="goldOutline">Tafels</Button>
               </Link>
-              <Link to="/producten?categorie=bar">
-                <Button variant="goldOutline">Bars</Button>
-              </Link>
               <Link to="/producten?categorie=tenten">
                 <Button variant="goldOutline">Tenten</Button>
-              </Link>
-              <Link to="/producten?categorie=extras">
-                <Button variant="goldOutline">Extra's</Button>
               </Link>
             </div>
             <Link to="/producten/alle">
