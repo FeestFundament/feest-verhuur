@@ -10,7 +10,11 @@ export interface Product {
   image: string;
   category: string;
   colors?: string[];
+  visible?: boolean;
 }
+
+// Helper to get only visible products
+export const getVisibleProducts = () => products.filter(p => p.visible !== false);
 
 export const products: Product[] = [
   {
@@ -19,7 +23,8 @@ export const products: Product[] = [
     description: "Elegante witte statafel. Beschikbaar met zwarte of witte tafelrok. Voor andere kleuren doeken, vraag een offerte aan.",
     price: 12.50,
     image: statafelImage,
-    category: "Tafels"
+    category: "Tafels",
+    visible: true
   },
   {
     id: "2",
@@ -27,7 +32,8 @@ export const products: Product[] = [
     description: "Complete set met biertafel en 2 banken. Ideaal voor buitenevenementen.",
     price: 25.00,
     image: biertafelImage,
-    category: "Tafels"
+    category: "Tafels",
+    visible: true
   },
   {
     id: "3",
@@ -35,7 +41,8 @@ export const products: Product[] = [
     description: "Professionele mobiele bar voor uw feest. Ombouw verkrijgbaar als apart product.",
     price: 75.00,
     image: barImage,
-    category: "Bars"
+    category: "Bars",
+    visible: false
   },
   {
     id: "7",
@@ -43,7 +50,8 @@ export const products: Product[] = [
     description: "Stijlvolle ombouw voor de mobiele bar. Geeft uw bar een professionele uitstraling.",
     price: 35.00,
     image: barImage,
-    category: "Bars"
+    category: "Bars",
+    visible: false
   },
   {
     id: "8",
@@ -51,7 +59,8 @@ export const products: Product[] = [
     description: "Professionele bartafel. Ombouw verkrijgbaar als apart product.",
     price: 45.00,
     image: statafelImage,
-    category: "Tafels"
+    category: "Tafels",
+    visible: false
   },
   {
     id: "9",
@@ -59,7 +68,8 @@ export const products: Product[] = [
     description: "Stijlvolle ombouw voor de bartafel. Geeft uw bartafel een professionele uitstraling.",
     price: 25.00,
     image: statafelImage,
-    category: "Tafels"
+    category: "Tafels",
+    visible: false
   },
   {
     id: "4",
@@ -68,7 +78,8 @@ export const products: Product[] = [
     price: 5.00,
     image: statafelImage,
     category: "Tafels",
-    colors: ["Zwart", "Wit"]
+    colors: ["Zwart", "Wit"],
+    visible: true
   },
   {
     id: "5",
@@ -76,7 +87,8 @@ export const products: Product[] = [
     description: "Waterdichte partytent, ideaal voor elk evenement.",
     price: 45.00,
     image: statafelImage,
-    category: "Tenten"
+    category: "Tenten",
+    visible: true
   },
   {
     id: "6",
@@ -84,7 +96,8 @@ export const products: Product[] = [
     description: "Sfeervolle LED verlichting in verschillende kleuren.",
     price: 15.00,
     image: statafelImage,
-    category: "Verlichting"
+    category: "Verlichting",
+    visible: false
   },
   {
     id: "10",
@@ -92,7 +105,8 @@ export const products: Product[] = [
     description: "Verse fusten voor uw feest. Verschillende merken beschikbaar.",
     price: 65.00,
     image: statafelImage,
-    category: "Dranken"
+    category: "Dranken",
+    visible: false
   },
   {
     id: "11",
@@ -100,6 +114,7 @@ export const products: Product[] = [
     description: "Professionele opbouw van alle gehuurde materialen. Wij zorgen ervoor dat alles klaarstaat.",
     price: 50.00,
     image: statafelImage,
-    category: "Diensten"
+    category: "Diensten",
+    visible: false
   }
 ];

@@ -4,11 +4,12 @@ import Navbar from "@/components/Navbar";
 import ProductCard from "@/components/ProductCard";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { products } from "@/lib/products";
+import { getVisibleProducts } from "@/lib/products";
 
 const Producten = () => {
   const [searchParams] = useSearchParams();
   const categorie = searchParams.get('categorie');
+  const visibleProducts = getVisibleProducts();
   
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -16,26 +17,20 @@ const Producten = () => {
   
   // Filter products based on category
   const filteredProducts = categorie 
-    ? products.filter(product => {
+    ? visibleProducts.filter(product => {
         const categoryLower = product.category.toLowerCase();
         
         // Map URL categories to product categories
         if (categorie === 'tafels' || categorie === 'alle-tafels') {
           return categoryLower === 'tafels';
         }
-        if (categorie === 'bar' || categorie === 'ombouw' || categorie === 'extra-tafel') {
-          return categoryLower === 'bars';
-        }
         if (categorie === 'tenten' || categorie === 'alle-tenten') {
           return categoryLower === 'tenten';
-        }
-        if (categorie === 'extras' || categorie === 'verlichting' || categorie === 'verwarming' || categorie === 'accessoires') {
-          return categoryLower === 'verlichting' || categoryLower === 'verwarming' || categoryLower === 'accessoires' || categoryLower === 'dranken' || categoryLower === 'diensten';
         }
         
         return false;
       })
-    : products;
+    : visibleProducts;
   
   // Get category title
   const getCategoryTitle = () => {
@@ -98,14 +93,8 @@ const Producten = () => {
             <Link to="/producten?categorie=tafels">
               <Button variant="goldOutline">Tafels</Button>
             </Link>
-            <Link to="/producten?categorie=bar">
-              <Button variant="goldOutline">Bars</Button>
-            </Link>
             <Link to="/producten?categorie=tenten">
               <Button variant="goldOutline">Tenten</Button>
-            </Link>
-            <Link to="/producten?categorie=extras">
-              <Button variant="goldOutline">Extra's</Button>
             </Link>
           </div>
           <Link to="/producten/alle">

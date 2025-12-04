@@ -47,7 +47,7 @@ const Navbar = () => {
                     Producten
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-background border border-border shadow-lg z-50">
-                    <div className="grid gap-3 p-6 w-[400px] lg:w-[500px]">
+                    <div className="grid gap-3 p-6 w-[300px]">
                       <div className="grid gap-2 pb-2 border-b">
                         <Link to="/producten/alle" className="font-bold text-base text-secondary hover:text-secondary/80 transition-colors">
                           Alle producten
@@ -58,44 +58,11 @@ const Navbar = () => {
                         <Link to="/producten?categorie=tafels" className="font-semibold text-sm text-foreground hover:text-secondary transition-colors">
                           Tafels
                         </Link>
-                        <Link to="/producten?categorie=alle-tafels" className="text-sm text-muted-foreground hover:text-secondary transition-colors pl-2">
-                          Alle tafels
-                        </Link>
-                      </div>
-                      
-                      <div className="grid gap-2 pt-2 border-t">
-                        <Link to="/producten?categorie=bar" className="font-semibold text-sm text-foreground hover:text-secondary transition-colors">
-                          Bar
-                        </Link>
-                        <Link to="/producten?categorie=ombouw" className="text-sm text-muted-foreground hover:text-secondary transition-colors pl-2">
-                          Ombouw
-                        </Link>
-                        <Link to="/producten?categorie=extra-tafel" className="text-sm text-muted-foreground hover:text-secondary transition-colors pl-2">
-                          Extra tafel naast de bar
-                        </Link>
                       </div>
                       
                       <div className="grid gap-2 pt-2 border-t">
                         <Link to="/producten?categorie=tenten" className="font-semibold text-sm text-foreground hover:text-secondary transition-colors">
                           Tenten
-                        </Link>
-                        <Link to="/producten?categorie=alle-tenten" className="text-sm text-muted-foreground hover:text-secondary transition-colors pl-2">
-                          Alle tenten
-                        </Link>
-                      </div>
-                      
-                      <div className="grid gap-2 pt-2 border-t">
-                        <Link to="/producten?categorie=extras" className="font-semibold text-sm text-foreground hover:text-secondary transition-colors">
-                          Extra's
-                        </Link>
-                        <Link to="/producten?categorie=verlichting" className="text-sm text-muted-foreground hover:text-secondary transition-colors pl-2">
-                          Verlichting
-                        </Link>
-                        <Link to="/producten?categorie=verwarming" className="text-sm text-muted-foreground hover:text-secondary transition-colors pl-2">
-                          Verwarming
-                        </Link>
-                        <Link to="/producten?categorie=overige" className="text-sm text-muted-foreground hover:text-secondary transition-colors pl-2">
-                          Overige accessoires
                         </Link>
                       </div>
                     </div>
@@ -186,25 +153,11 @@ const Navbar = () => {
                         Tafels
                       </Link>
                       <Link 
-                        to="/producten?categorie=bar" 
-                        className="text-base text-muted-foreground hover:text-secondary transition-colors"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        Bar
-                      </Link>
-                      <Link 
                         to="/producten?categorie=tenten" 
                         className="text-base text-muted-foreground hover:text-secondary transition-colors"
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         Tenten
-                      </Link>
-                      <Link 
-                        to="/producten?categorie=extras" 
-                        className="text-base text-muted-foreground hover:text-secondary transition-colors"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        Extra's
                       </Link>
                     </div>
                   </div>

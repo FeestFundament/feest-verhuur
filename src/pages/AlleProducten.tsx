@@ -3,27 +3,25 @@ import Navbar from "@/components/Navbar";
 import ProductCard from "@/components/ProductCard";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { products } from "@/lib/products";
+import { getVisibleProducts, Product } from "@/lib/products";
 
 const AlleProducten = () => {
+  const visibleProducts = getVisibleProducts();
+  
   // Group products by category
-  const groupedProducts = products.reduce((acc, product) => {
+  const groupedProducts = visibleProducts.reduce((acc, product) => {
     const category = product.category;
     if (!acc[category]) {
       acc[category] = [];
     }
     acc[category].push(product);
     return acc;
-  }, {} as Record<string, typeof products>);
+  }, {} as Record<string, Product[]>);
 
   // Category display names
   const categoryNames: Record<string, string> = {
     'Tafels': 'Tafels',
-    'Bars': 'Bars',
-    'Tenten': 'Tenten',
-    'Verlichting': 'Verlichting',
-    'Dranken': 'Dranken',
-    'Diensten': 'Diensten'
+    'Tenten': 'Tenten'
   };
 
   return (
@@ -62,14 +60,8 @@ const AlleProducten = () => {
             <Link to="/producten?categorie=tafels">
               <Button variant="goldOutline">Tafels</Button>
             </Link>
-            <Link to="/producten?categorie=bar">
-              <Button variant="goldOutline">Bars</Button>
-            </Link>
             <Link to="/producten?categorie=tenten">
               <Button variant="goldOutline">Tenten</Button>
-            </Link>
-            <Link to="/producten?categorie=extras">
-              <Button variant="goldOutline">Extra's</Button>
             </Link>
           </div>
         </div>
