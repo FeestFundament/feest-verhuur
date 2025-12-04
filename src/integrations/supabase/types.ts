@@ -56,6 +56,24 @@ export type Database = {
         }
         Relationships: []
       }
+      email_rate_limits: {
+        Row: {
+          id: string
+          ip_address: string
+          sent_at: string
+        }
+        Insert: {
+          id?: string
+          ip_address: string
+          sent_at?: string
+        }
+        Update: {
+          id?: string
+          ip_address?: string
+          sent_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           account_type: Database["public"]["Enums"]["account_type"]
