@@ -115,6 +115,6 @@ export const products: Product[] = [
     price: 50.00,
     image: statafelImage,
     category: "Diensten",
-    visible: false
+    visible: true
   }
 ];
