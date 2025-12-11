@@ -30,7 +30,7 @@ export const products: Product[] = [
     id: "2",
     name: "Biertafel set",
     description: "Complete set met biertafel en 2 banken. Ideaal voor buitenevenementen.",
-    price: 25.00,
+    price: 10.00,
     image: biertafelImage,
     category: "Tafels",
     visible: true
