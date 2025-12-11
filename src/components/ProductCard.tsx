@@ -165,7 +165,7 @@ const ProductCard = ({ id, name, description, price, image, colors }: ProductCar
         <CardContent className="p-4 flex-1 flex flex-col">
           <h3 className="text-xl font-semibold text-secondary mb-2">{name}</h3>
           <p className="text-muted-foreground text-sm mb-3 flex-1">{description}</p>
-          <p className="text-2xl font-bold text-secondary mt-auto">€{price.toFixed(2)}</p>
+          <p className="text-2xl font-bold text-secondary mt-auto">€{price.toFixed(2)} <span className="text-sm font-normal text-muted-foreground">per dag</span></p>
         </CardContent>
         <CardFooter className="p-4 pt-0 flex flex-col gap-3">
           {colors && colors.length > 0 && (
