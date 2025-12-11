@@ -11,6 +11,7 @@ export interface Product {
   category: string;
   colors?: string[];
   visible?: boolean;
+  priceType?: "daily" | "fixed";
 }
 
 // Helper to get only visible products
@@ -124,6 +125,7 @@ export const products: Product[] = [
     price: 50.00,
     image: statafelImage,
     category: "Diensten",
-    visible: true
+    visible: true,
+    priceType: "fixed"
   }
 ];
