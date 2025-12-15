@@ -26,7 +26,12 @@ const App = () => (
         <CartProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
+          {/*
+            Important for GitHub Pages / some custom-domain setups:
+            using relative routing avoids blank screens when the server
+            doesn't rewrite unknown routes to /index.html.
+          */}
+          <BrowserRouter basename={import.meta.env.BASE_URL}>
             <ScrollToTop />
             <Routes>
               <Route path="/" element={<Index />} />
