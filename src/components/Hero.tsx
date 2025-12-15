@@ -14,36 +14,32 @@ const Hero = () => {
   return (
     <section className="min-h-[60vh] md:h-screen md:max-h-screen flex flex-col bg-background overflow-hidden pb-8 md:pb-24">
       {/* Logo sectie - gecentreerd */}
-      <div className="flex-1 flex items-center justify-center py-4 md:py-0">
+      <div className="flex-1 flex items-center justify-center py-2 md:py-0">
         <div className="container mx-auto px-4 text-center animate-fade-in">
-          <img 
-            src={logo} 
-            alt="Feest-Fundament - Het fundament voor een geslaagd feest" 
-            className="w-full max-w-[360px] md:max-w-xl mx-auto drop-shadow-2xl"
+          <img
+            src={logo}
+            alt="Feest-Fundament - Het fundament voor een geslaagd feest"
+            className="w-full max-w-[260px] md:max-w-xl mx-auto drop-shadow-2xl"
           />
         </div>
       </div>
-      
+
       {/* Hero afbeelding balk onderaan viewport */}
       <div className="w-full">
         <div className="container mx-auto px-4">
           <div className="relative h-[100px] md:h-[150px] w-full flex items-center justify-center overflow-hidden rounded-lg">
-            <div 
+            <div
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url(${heroImage})` }}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background/30" />
-            
+
             <div className="relative z-10 flex flex-col items-center justify-center gap-3 px-4 animate-fade-in">
               <p className="text-foreground/90 text-xs md:text-sm font-medium tracking-wide">
                 {tagline}
               </p>
               <Link to="/producten">
-                <Button 
-                  variant="gold" 
-                  size="xl"
-                  className="shadow-2xl text-sm md:text-base"
-                >
+                <Button variant="gold" size="xl" className="shadow-2xl text-sm md:text-base">
                   Bekijk ons assortiment
                 </Button>
               </Link>
