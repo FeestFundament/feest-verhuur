@@ -19,7 +19,7 @@ const Hero = () => {
           <img 
             src={logo} 
             alt="Feest-Fundament - Het fundament voor een geslaagd feest" 
-            className="w-full max-w-[180px] md:max-w-xl mx-auto drop-shadow-2xl"
+            className="w-full max-w-[360px] md:max-w-xl mx-auto drop-shadow-2xl"
           />
         </div>
       </div>
