@@ -12,14 +12,14 @@ const Hero = () => {
     : 'Uw verhuurder voor professionele feestartikelen';
   
   return (
-    <section className="h-screen max-h-screen flex flex-col bg-background overflow-hidden pb-16 md:pb-24">
+    <section className="min-h-[60vh] md:h-screen md:max-h-screen flex flex-col bg-background overflow-hidden pb-8 md:pb-24">
       {/* Logo sectie - gecentreerd */}
-      <div className="flex-1 flex items-center justify-center">
+      <div className="flex-1 flex items-center justify-center py-4 md:py-0">
         <div className="container mx-auto px-4 text-center animate-fade-in">
           <img 
             src={logo} 
             alt="Feest-Fundament - Het fundament voor een geslaagd feest" 
-            className="w-full max-w-[250px] md:max-w-xl mx-auto drop-shadow-2xl"
+            className="w-full max-w-[180px] md:max-w-xl mx-auto drop-shadow-2xl"
           />
         </div>
       </div>
