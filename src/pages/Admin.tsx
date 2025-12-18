@@ -14,7 +14,9 @@ import {
 } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Loader2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Loader2, Package, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface UserProfile {
   id: string;
@@ -85,6 +87,32 @@ const Admin = () => {
     <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
       <main className="flex-1 container mx-auto px-4 py-8 pt-24">
+        <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
+        
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <Link to="/admin/bestellingen">
+            <Card className="hover:border-primary transition-colors cursor-pointer">
+              <CardContent className="p-6 flex items-center gap-4">
+                <Package className="h-10 w-10 text-primary" />
+                <div>
+                  <h3 className="text-xl font-semibold">Bestellingen</h3>
+                  <p className="text-muted-foreground">Bekijk en beheer alle bestellingen</p>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+          
+          <Card>
+            <CardContent className="p-6 flex items-center gap-4">
+              <Users className="h-10 w-10 text-primary" />
+              <div>
+                <h3 className="text-xl font-semibold">Gebruikers</h3>
+                <p className="text-muted-foreground">{users.length} geregistreerde gebruikers</p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
         <Card>
           <CardHeader>
             <CardTitle className="text-2xl">Geregistreerde Gebruikers</CardTitle>

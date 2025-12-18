@@ -10,11 +10,14 @@ import Index from "./pages/Index";
 import Producten from "./pages/Producten";
 import AlleProducten from "./pages/AlleProducten";
 import Winkelwagen from "./pages/Winkelwagen";
+import Checkout from "./pages/Checkout";
+import BetalingSucces from "./pages/BetalingSucces";
 import SpecifiekeAanvragen from "./pages/SpecifiekeAanvragen";
 import OverOns from "./pages/OverOns";
 import Contact from "./pages/Contact";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
+import AdminBestellingen from "./pages/AdminBestellingen";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,11 +41,14 @@ const App = () => (
               <Route path="/producten" element={<Producten />} />
               <Route path="/producten/alle" element={<AlleProducten />} />
               <Route path="/winkelwagen" element={<Winkelwagen />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/betaling-succes" element={<BetalingSucces />} />
               <Route path="/specifieke-aanvragen" element={<SpecifiekeAanvragen />} />
               <Route path="/over-ons" element={<OverOns />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/admin/bestellingen" element={<AdminBestellingen />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
