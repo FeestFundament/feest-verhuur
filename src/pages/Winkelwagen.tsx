@@ -252,9 +252,11 @@ const Winkelwagen = () => {
                 </div>
                 
                 <div className="space-y-3">
-                  <Button variant="gold" className="w-full" size="lg">
-                    Huur nu
-                  </Button>
+                  <Link to="/checkout">
+                    <Button variant="gold" className="w-full" size="lg">
+                      Afrekenen
+                    </Button>
+                  </Link>
                   <Link to="/producten">
                     <Button variant="ghost" className="w-full text-secondary">
                       Verder winkelen

@@ -74,6 +74,110 @@ export type Database = {
         }
         Relationships: []
       }
+      order_items: {
+        Row: {
+          color: string | null
+          created_at: string
+          end_date: string
+          id: string
+          item_total: number
+          order_id: string
+          price_per_day: number
+          product_id: string
+          product_name: string
+          quantity: number
+          rental_days: number
+          start_date: string
+        }
+        Insert: {
+          color?: string | null
+          created_at?: string
+          end_date: string
+          id?: string
+          item_total: number
+          order_id: string
+          price_per_day: number
+          product_id: string
+          product_name: string
+          quantity: number
+          rental_days: number
+          start_date: string
+        }
+        Update: {
+          color?: string | null
+          created_at?: string
+          end_date?: string
+          id?: string
+          item_total?: number
+          order_id?: string
+          price_per_day?: number
+          product_id?: string
+          product_name?: string
+          quantity?: number
+          rental_days?: number
+          start_date?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_items_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      orders: {
+        Row: {
+          created_at: string
+          customer_address: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          id: string
+          status: string
+          stripe_payment_intent_id: string | null
+          stripe_session_id: string | null
+          subtotal: number
+          total: number
+          travel_cost: number
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          customer_address: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          id?: string
+          status?: string
+          stripe_payment_intent_id?: string | null
+          stripe_session_id?: string | null
+          subtotal: number
+          total: number
+          travel_cost?: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          customer_address?: string
+          customer_email?: string
+          customer_name?: string
+          customer_phone?: string
+          id?: string
+          status?: string
+          stripe_payment_intent_id?: string | null
+          stripe_session_id?: string | null
+          subtotal?: number
+          total?: number
+          travel_cost?: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           account_type: Database["public"]["Enums"]["account_type"]
